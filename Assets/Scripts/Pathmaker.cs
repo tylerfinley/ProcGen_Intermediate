@@ -8,7 +8,9 @@ public class Pathmaker : MonoBehaviour {
     public int tileCountReset;
 
     int counter = 0;
-    public Transform floorPrefab;
+    public Transform floorPrefab1;
+    public Transform floorPrefab2;
+    public Transform floorPrefab3;
     public Transform pathmakerSpherePrefab;
 
     int tileAllowance;
@@ -41,7 +43,17 @@ public class Pathmaker : MonoBehaviour {
             {
                 Instantiate(pathmakerSpherePrefab, transform.position, Quaternion.identity);
             }
-            Instantiate(floorPrefab, transform.position, Quaternion.identity);
+            //rare chance of twister
+            if (rand < 0.15f)
+            {
+                Instantiate(floorPrefab1, transform.position, Quaternion.identity);
+            } else if (rand < .7f) //highest chance of computer
+            {
+                Instantiate(floorPrefab2, transform.position, Quaternion.identity);
+            } else // medium chance face
+            {
+                Instantiate(floorPrefab3, transform.position, Quaternion.identity);
+            }
             transform.Translate(0f, 0f, 5f);
             counter++;
             tileCount++;
